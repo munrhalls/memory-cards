@@ -1,0 +1,13 @@
+.lines .lines-line {
+    border-bottom: 1px solid #000;
+}
+  
+.lines .lines-add-input {
+    height: 3rem;
+    width: 10rem;
+}
+
+.lines .lines-add-btn {
+    height: 3rem;
+    width: 3rem;
+}
