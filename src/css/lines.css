@@ -11,3 +11,17 @@
     height: 3.5rem;
     width: 3rem;
 }
+
+.lines .lines-line-id {
+    background-color: #000;
+    color: #fff;
+    width: 0.5rem;
+    padding: 0.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lines .lines-line-text {
+    
+}
