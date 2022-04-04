@@ -1,3 +1,7 @@
+.lines {
+    align-self: flex-start;
+}
+
 .lines .lines-line {
     border-bottom: 1px solid #000;
 }
@@ -15,8 +19,9 @@
 .lines .lines-line-id {
     background-color: #000;
     color: #fff;
-    width: 0.5rem;
-    padding: 0.25rem;
+    font-size: 0.75rem;
+    width: 2.5rem;
+    padding: 0.15rem;
     display: flex;
     justify-content: center;
     align-items: center;

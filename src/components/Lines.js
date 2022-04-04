@@ -7,28 +7,47 @@ export class Lines extends React.Component {
 
     this.state = {
       text: "",
-      lines: [],
+      history: [{ lines: [] }],
+      timePoint: 0,
     };
   }
 
   handleAdd() {
-    const text = this.state.text;
-    const lines = this.state.lines;
+    const history = this.state.history.slice(0, this.state.timePoint + 1);
+    const current = history[history.length - 1];
+    const lines = current.lines.slice();
 
+    lines[lines.length] = {
+      id: lines.length,
+      text: this.state.text,
+    };
+    console.log(history);
     this.setState({
       text: "",
-      lines: lines.concat([
-        {
-          id: lines.length,
-          text: text,
-        },
-      ]),
+      history: history.concat([{ lines: lines }]),
+      timePoint: history.length,
     });
   }
-
+  jumpToTime(index) {
+    this.setState({
+      timePoint: index,
+    });
+  }
   render() {
-    const lines = this.state.lines;
+    const history = this.state.history;
+    const current = history[this.state.timePoint];
+    const lines = current.lines;
 
+    const timePoints = history.map((lineAdded, index) => {
+      const desc = index
+        ? "Go to time of adding line #" + index
+        : "Go to first line.";
+      return (
+        <li key={index}>
+          <button onClick={() => this.jumpToTime(index)}>{desc}</button>
+        </li>
+      );
+    });
     return (
       <div className="lines">
         <input
@@ -45,6 +64,7 @@ export class Lines extends React.Component {
               return <Line key={line.id} {...line} />;
             })
           : ""}
+        <ol>{timePoints}</ol>
       </div>
     );
   }
