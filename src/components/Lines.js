@@ -42,7 +42,7 @@ export class Lines extends React.Component {
         </button>
         {lines.length
           ? lines.map((line) => {
-              return <Line key={line.id} text={line.text} />;
+              return <Line key={line.id} {...line} />;
             })
           : ""}
       </div>
